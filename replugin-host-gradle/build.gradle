@@ -14,10 +14,8 @@
  * the License.
  */
 
-apply plugin: 'java'
 apply plugin: 'groovy'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
+
 
 repositories {
     jcenter()
@@ -25,31 +23,29 @@ repositories {
     google()
 }
 
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral()
-        google()
-    }
-
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
-        classpath 'com.github.dcendents:android-maven-plugin:1.2'
-    }
-}
+//buildscript {
+//    repositories {
+//        jcenter()
+//        mavenCentral()
+//        google()
+//    }
+//
+//    dependencies {
+//        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+//        classpath 'com.github.dcendents:android-maven-plugin:1.2'
+//    }
+//}
 
 dependencies {
-    compile 'com.android.tools.build:gradle:3.5.4'
-    compile 'org.json:json:20160212'
-    compile 'org.codehaus.groovy:groovy:2.4.7'
-    compile 'com.squareup:javapoet:1.5.1'
-
     compile gradleApi()
     compile localGroovy()
-
-    compile 'com.google.gradle:osdetector-gradle-plugin:1.2.1'
+    compile 'com.android.tools.build:gradle:3.5.2'
+//    compile 'org.json:json:20160212'
+//    compile 'org.codehaus.groovy:groovy:2.4.7'
+//    compile 'com.squareup:javapoet:1.5.1'
+//    compile 'com.google.gradle:osdetector-gradle-plugin:1.2.1'
     compile 'net.dongliu:apk-parser:2.2.0'
 }
 
-project.ext.RP_ARTIFACT_ID = 'replugin-host-gradle'
-apply from: '../rp-publish.gradle'
+//project.ext.RP_ARTIFACT_ID = 'replugin-host-gradle'
+apply from: 'bintray.gradle'
