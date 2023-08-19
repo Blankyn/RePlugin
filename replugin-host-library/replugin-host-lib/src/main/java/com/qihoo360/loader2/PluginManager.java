@@ -70,6 +70,7 @@ public class PluginManager {
     }
 
     /**
+     *
      * @return
      */
     static final boolean isPluginProcess(int index) {
