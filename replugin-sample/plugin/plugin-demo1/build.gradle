@@ -14,15 +14,17 @@
  * the License.
  */
 buildscript {
-    { p, cfg = "rp-config.gradle" -> if (new File(p, cfg).exists()) apply from: "${p}/${cfg}" else if (p.exists()) call(p.parentFile) }(buildscript.sourceFile.parentFile)
+    { p, cfg = "rp-config.gradle" ->
+        if (new File(p, cfg).exists()) apply from: "${p}/${cfg}"
+        else if (p.exists()) call(p.parentFile) }(buildscript.sourceFile.parentFile)
     repositories {
         mavenCentral()
         maven { url "https://maven.google.com" }
-        maven {url "http://maven.geelib.360.cn/nexus/repository/replugin/"}
+        maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.4'
-        classpath "com.qihoo360.replugin:replugin-plugin-gradle:${RP_VERSION}"
+        classpath "io.github.blankyn:replugin-plugin-gradle:${RP_VERSION}"
     }
 }
 
@@ -30,7 +32,7 @@ allprojects {
     repositories {
         mavenCentral()
         maven { url "https://maven.google.com" }
-        maven {url "http://maven.geelib.360.cn/nexus/repository/replugin/"}
+        maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
     }
 }
 

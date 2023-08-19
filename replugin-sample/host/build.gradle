@@ -14,16 +14,18 @@
  * the License.
  */
 buildscript {
+    { p, cfg = "rp-config.gradle" ->
+        if (new File(p, cfg).exists()) apply from: "${p}/${cfg}"
+        else if (p.exists()) call(p.parentFile) }(buildscript.sourceFile.parentFile)
     repositories {
         mavenCentral()
         google()
         maven {url "https://maven.google.com"}
-        maven {url "http://maven.geelib.360.cn/nexus/repository/replugin/"}
         maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.2'
-        classpath "io.github.blankyn:replugin-host-gradle:3.0.3-SNAPSHOT"
+        classpath 'com.android.tools.build:gradle:3.5.4'
+        classpath "io.github.blankyn:replugin-host-gradle:${RP_VERSION}"
     }
 }
 
@@ -32,7 +34,6 @@ allprojects {
         google()
         mavenCentral()
         maven { url "https://maven.google.com" }
-        maven {url "http://maven.geelib.360.cn/nexus/repository/replugin/"}
         maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
     }
 }
