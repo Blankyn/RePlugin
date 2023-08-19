@@ -33,6 +33,8 @@ import java.lang.reflect.Field;
 
 /**
  * @author RePlugin Team
+ *
+ * 适配androidx
  */
 public abstract class PluginFragmentXActivity extends FragmentActivity {
 

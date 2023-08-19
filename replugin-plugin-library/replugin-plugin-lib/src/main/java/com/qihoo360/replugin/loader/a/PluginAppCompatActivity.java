@@ -54,7 +54,6 @@ public abstract class PluginAppCompatActivity extends AppCompatActivity {
 
     @Override
     public Context getBaseContext() {
-
         return super.getBaseContext();
     }
 
