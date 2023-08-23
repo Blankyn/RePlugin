@@ -60,7 +60,6 @@ def static replaceVariables(File file, String key, String value) {
     file.write((file.text =~ /${regex}/).replaceAll(value))
 }
 
-//project.ext.RP_ARTIFACT_ID = 'replugin-host-gradle'
 apply from: 'bintray.gradle'
 
 pbUpdateVariables()
