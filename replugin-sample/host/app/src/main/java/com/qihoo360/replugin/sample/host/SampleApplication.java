@@ -18,6 +18,7 @@ package com.qihoo360.replugin.sample.host;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.qihoo360.replugin.RePlugin;

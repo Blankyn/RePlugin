@@ -39,6 +39,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.qihoo360.replugin.RePlugin;
+import com.qihoo360.replugin.loader.a.PluginActivity;
 import com.qihoo360.replugin.sample.demo1.activity.file_provider.FileProviderActivity;
 import com.qihoo360.replugin.sample.demo1.activity.notify_test.NotifyActivity;
 import com.qihoo360.replugin.sample.demo1.activity.preference.PrefActivity2;
@@ -66,6 +67,8 @@ import static com.qihoo360.replugin.sample.demo1.support.NotifyUtils.TAG;
  * @author RePlugin Team
  */
 public class MainActivity extends Activity {
+
+    public final String TAG = "demo1";
 
     private List<TestItem> mItems = new ArrayList<>();
 

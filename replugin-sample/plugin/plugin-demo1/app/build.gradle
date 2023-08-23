@@ -67,6 +67,7 @@ repluginPluginConfig {
 
 dependencies {
     implementation "io.github.blankyn:replugin-plugin-lib:${RP_VERSION}"
+//    implementation project(path: ':replugin-plugin-lib')
     compileOnly 'androidx.appcompat:appcompat:1.3.1'
 }
 

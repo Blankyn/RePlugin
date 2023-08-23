@@ -17,6 +17,9 @@ buildscript {
     { p, cfg = "rp-config.gradle" -> if (new File(p, cfg).exists()) apply from: "${p}/${cfg}" else if (p.exists()) call(p.parentFile) }(buildscript.sourceFile.parentFile)
     repositories {
         mavenCentral()
+        maven { url "https://jitpack.io" }
+        //TODO 此处为电脑本地仓库
+        maven { url "/Volumes/document/repo-local" }
         maven { url "https://maven.google.com" }
         maven { url "https://jitpack.io" }
         maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
@@ -30,9 +33,12 @@ buildscript {
 allprojects {
     repositories {
         mavenCentral()
+        maven { url "https://jitpack.io" }
+        //TODO 此处为电脑本地仓库
+        maven { url "/Volumes/document/repo-local" }
         maven { url "https://maven.google.com" }
         maven { url "https://jitpack.io" }
-        maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+//        maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
     }
 }
 

@@ -21,7 +21,7 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.qihoo360.replugin.sample.host"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -40,6 +40,21 @@ repluginHostConfig {
     useAndroidX = true
     // 可以在这里自定义常驻进程的名字
     // persistentName = ":XXXXService"
+
+    /**
+     * 背景不透明的坑的数量
+     * 不需要个性化配置时，无需添加
+     */
+    countNotTranslucentStandard = 6
+    countNotTranslucentSingleTop = 4
+    countNotTranslucentSingleTask = 4
+    countNotTranslucentSingleInstance = 2
+    countProcess = 5
+
+    /**
+     * 设置为“不需要常驻进程” 固定为false
+     */
+    persistentEnable = false
 }
 
 dependencies {
@@ -47,4 +62,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
     implementation "io.github.blankyn:replugin-host-lib:${RP_VERSION}"
+//    implementation project(path: ':replugin-host-lib')
+    implementation 'com.github.lzyzsd:jsbridge:1.0.4'
+//    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+//    implementation "io.github.blankyn:replugin-host-lib:3.0.0-SNAPSHOT"
 }
