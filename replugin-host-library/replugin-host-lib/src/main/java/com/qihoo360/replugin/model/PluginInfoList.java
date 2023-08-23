@@ -79,6 +79,17 @@ public class PluginInfoList implements Iterable<PluginInfo> {
         try {
             // 1. 读出字符串
             final File f = getFile(context);
+
+            // fix: added by qfmeng
+            // java.io.FileNotFoundException:
+            // File '/data/data/com.qihoo360.replugin.sample.host/app_p_a/p.l' does not exist
+            if (!f.exists()) {
+                if (LogDebug.LOG) {
+                    LogDebug.e(TAG, "load: file exist");
+                }
+                return false;
+            }
+
             final String result = FileUtils.readFileToString(f, Charsets.UTF_8);
             if (TextUtils.isEmpty(result)) {
                 if (LogDebug.LOG) {

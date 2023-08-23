@@ -39,6 +39,9 @@ public final class RePluginConfig {
     private RePluginCallbacks callbacks;
     private RePluginEventCallbacks eventCallbacks;
 
+    /**
+     * p-n型插件安装的路径 Added comment only by qfmeng
+     */
     private File pnInstallDir;
     private boolean verifySign = false;
     private boolean persistentEnable = true;
@@ -124,7 +127,7 @@ public final class RePluginConfig {
     }
 
     /**
-     * 是否开启插件签名校验 
+     * 是否开启插件签名校验
      *
      * @return 是否开启
      */

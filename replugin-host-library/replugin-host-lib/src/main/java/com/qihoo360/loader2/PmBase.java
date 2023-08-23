@@ -27,7 +27,9 @@ import android.content.pm.ServiceInfo;
 import android.os.IBinder;
 import android.os.Parcelable;
 import android.os.RemoteException;
+
 import com.qihoo360.loader.utils.LocalBroadcastManager;
+
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -211,7 +213,9 @@ class PmBase {
 
         String plugin;
 
-        /** @deprecated */
+        /**
+         * @deprecated
+         */
         String classType; // activity, service, provider
 
         Class defClass;
@@ -302,7 +306,6 @@ class PmBase {
 
     /**
      * Persistent(常驻)进程的初始化
-     *
      */
     private final void initForServer() {
         if (LOG) {
@@ -332,11 +335,20 @@ class PmBase {
                 //需要找到内置有更新的插件，然后重新写入p.l文件中
                 List<PluginInfo> newestBuiltin = findNewestBuiltin(mAll.getPlugins(), l);
                 if (!newestBuiltin.isEmpty()) {
+                    //log Added comment only by qfmeng
+                    if (LOG) {
+                        Log.d(TAG_NO_PN, "有内置插件更新" + newestBuiltin.size());
+                    }
                     newestBuiltin = PluginManagerProxy.preInstallBuiltins(newestBuiltin);
                     refreshPluginMap(newestBuiltin);
                 }
             }
             if (l != null) {
+                //log Added comment only by qfmeng
+                if (LOG) {
+                    Log.d(TAG_NO_PN, "更新插件信息");
+                }
+
                 // 将"纯APK"插件信息并入总的插件信息表中，方便查询
                 // 这里有可能会覆盖之前在p-n中加入的信息。本来我们就想这么干，以"纯APK"插件为准
                 refreshPluginMap(l);
@@ -350,8 +362,9 @@ class PmBase {
 
     /**
      * 找到内置插件列表中，有更新的插件
+     *
      * @param builtin 内置插件列表
-     * @param plList p.l插件列表
+     * @param plList  p.l插件列表
      */
     private List<PluginInfo> findNewestBuiltin(List<PluginInfo> builtin, List<PluginInfo> plList) {
         List<PluginInfo> newest = new ArrayList<>();
@@ -382,7 +395,6 @@ class PmBase {
 
     /**
      * Client(UI进程)的初始化
-     *
      */
     private final void initForClient() {
         if (LOG) {
@@ -466,6 +478,10 @@ class PmBase {
      */
     private final void refreshPluginMap(List<PluginInfo> plugins) {
         if (plugins == null) {
+            //log Added comment only by qfmeng
+            if (LOG) {
+                LogDebug.d(PLUGIN_TAG, "refreshPluginMap plugins is null");
+            }
             return;
         }
         for (PluginInfo info : plugins) {
@@ -1025,7 +1041,8 @@ class PmBase {
                     if (load) {
                         try {
                             PluginBinderInfo info = new PluginBinderInfo(PluginBinderInfo.BINDER_REQUEST);
-                            /*IPluginClient client = */MP.startPluginProcess(a, IPluginManager.PROCESS_AUTO, info);
+                            /*IPluginClient client = */
+                            MP.startPluginProcess(a, IPluginManager.PROCESS_AUTO, info);
                         } catch (Throwable e) {
                             e.printStackTrace();
                         }

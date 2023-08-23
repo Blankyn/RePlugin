@@ -88,13 +88,18 @@ public class PluginManager {
     static final void init(Context context) {
         // 初始化操作，方便后面执行任务，不必担心Handler为空的情况
         Tasks.init();
-        //
+        // 当前Android应用程序的UID Added comment only by qfmeng
         sUid = android.os.Process.myUid();
 
-        //
+        // 根据当前进程名称来判断插件进程的类型，并返回相应的插件进程。Added comment only by qfmeng
         sPluginProcessIndex = evalPluginProcess(IPC.getCurrentProcessName());
     }
 
+    /**
+     * 根据当前进程名称来判断插件进程号
+     * @param name 当前进程名称
+     * @return 返回插件进程号 Added comment only by qfmeng
+     */
     static final int evalPluginProcess(String name) {
         int index = IPluginManager.PROCESS_AUTO;
 
@@ -103,6 +108,7 @@ public class PluginManager {
                 if (LOG) {
                     LogDebug.d(PLUGIN_TAG, "plugin process checker: default, index=" + 0);
                 }
+                //UI进程  Added comment only by qfmeng
                 return IPluginManager.PROCESS_UI;
             }
 
@@ -118,6 +124,7 @@ public class PluginManager {
                 if (LOG) {
                     LogDebug.d(PLUGIN_TAG, "plugin process checker: non plugin process in=" + name);
                 }
+                //自动分配插件进程  Added comment only by qfmeng
                 return IPluginManager.PROCESS_AUTO;
             }
 
@@ -126,6 +133,7 @@ public class PluginManager {
                 if (LOG) {
                     LogDebug.d(PLUGIN_TAG, "plugin process checker: no group in=" + name);
                 }
+                //自动分配插件进程 Added comment only by qfmeng
                 return IPluginManager.PROCESS_AUTO;
             }
 
@@ -134,6 +142,7 @@ public class PluginManager {
                 if (LOG) {
                     LogDebug.d(PLUGIN_TAG, "plugin process checker: package name not match in=" + name);
                 }
+                //自动分配插件进程 Added comment only by qfmeng
                 return IPluginManager.PROCESS_AUTO;
             }
 

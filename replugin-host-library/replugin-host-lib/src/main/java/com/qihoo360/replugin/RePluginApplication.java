@@ -59,6 +59,7 @@ public class RePluginApplication extends Application {
             c = new RePluginConfig();
         }
 
+        //插件框架对外回调接口集 added by qfmeng
         RePluginCallbacks cb = createCallbacks();
         if (cb != null) {
             c.setCallbacks(cb);

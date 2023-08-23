@@ -145,7 +145,7 @@ public class DebuggerReceivers {
 
             String plugin = intent.getStringExtra(PARAM_PLUGIN);
 
-            if (TextUtils.isEmpty(plugin)){
+            if (TextUtils.isEmpty(plugin)) {
                 return false;
             }
 
@@ -217,11 +217,25 @@ public class DebuggerReceivers {
 
         }
 
+        /**
+         * 纯apk插件安装
+         *
+         * @param path        插件安装路径
+         * @param immediately 是否预加载
+         * @return 是否安装成功 Added comment only by qfmeng
+         */
         private boolean onInstallByApk(String path, boolean immediately) {
             return onInstall(path, immediately);
         }
 
-        private boolean onInstallByPn(String path, boolean imeediately) {
+        /**
+         * 安装"p-n-"开头的插件
+         * fix: 纠正imeediately单词写错，正确imeediately
+         * @param path        插件安装路径
+         * @param immediately 是否预加载
+         * @return 是否安装成功 Added comment only by qfmeng
+         */
+        private boolean onInstallByPn(String path, boolean immediately) {
             path = RePlugin.convertToPnFile(path);
             if (TextUtils.isEmpty(path)) {
                 if (LogDebug.LOG) {
@@ -229,7 +243,7 @@ public class DebuggerReceivers {
                 }
                 return false;
             }
-            return onInstall(path, imeediately);
+            return onInstall(path, immediately);
         }
 
         private boolean onInstall(String path, boolean immediately) {

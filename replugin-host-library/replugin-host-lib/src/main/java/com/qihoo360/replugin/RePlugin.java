@@ -961,10 +961,16 @@ public class RePlugin {
                 return;
             }
 
+            //缓存Application对象 Added comment only by qfmeng
             RePluginInternal.init(app);
             sConfig = config;
+            //初始化默认值:Added comment only by qfmeng
+            // 1、插件化框架对外事件回调接口集
+            // 2、p-n型插件安装的路径
+            // 3、插件框架对外回调接口集
             sConfig.initDefaults(app);
 
+            //用于“进程间通信”的类。插件和宿主可使用此类来做一些跨进程发送广播、判断进程等工作。 Added comment only by qfmeng
             IPC.init(app);
 
             // 打印当前内存占用情况

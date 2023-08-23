@@ -774,6 +774,12 @@ class Plugin {
                     }
                     return false;
                 }
+
+                //log Added comment only by qfmeng
+                if (LOG) {
+                    LogDebug.d(PLUGIN_TAG, "内置插件首次加载成功");
+                }
+
                 File file = new File(dir, dstName);
                 info = (PluginInfo) mInfo.clone();
                 info.setPath(file.getPath());
