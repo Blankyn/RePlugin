@@ -10,7 +10,7 @@ def artifactory_snapshot_url = 'https://s01.oss.sonatype.org/content/repositorie
 def artifactory_release_url = 'https://s01.oss.sonatype.org/content/repositories/releases/'
 
 // 项目引用的版本号，比如compile 'com.yanzhenjie:andserver:1.0.1'中的1.0.1就是这里配置的。
-def artifact_version = '3.0.3-SNAPSHOT' //-SNAPSHOT
+def artifact_version = '3.0.5-SNAPSHOT' //-SNAPSHOT
 // 唯一包名，比如compile 'com.yanzhenjie:andserver:1.0.1'中的com.yanzhenjie就是这里配置的。
 def artifact_group = 'io.github.blankyn'
 def artifact_id = 'replugin-plugin-gradle'
@@ -24,7 +24,8 @@ uploadArchives {
         mavenDeployer {
             //deploy到maven仓库
             if (debug_flag) {
-                repository(url: uri('repo-local')) //deploy到本地仓库
+//                repository(url: uri('repo-local')) //deploy到本地仓库
+                repository(url: uri('/Volumes/document/repo-local')) //deploy到本地仓库
             } else {//deploy到maven私服中
                 repository(url: artifactory_release_url) {
                     authentication(userName: artifactory_user, password: artifactory_password)
