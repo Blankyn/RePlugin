@@ -18,10 +18,11 @@ buildscript {
         if (new File(p, cfg).exists()) apply from: "${p}/${cfg}"
         else if (p.exists()) call(p.parentFile) }(buildscript.sourceFile.parentFile)
     repositories {
+        google()
         mavenCentral()
-        maven { url "/Volumes/document/repo-local" }
-        maven { url "https://maven.google.com" }
+        mavenLocal()
         maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+        maven { url "https://maven.google.com" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.4'
@@ -31,10 +32,12 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
         mavenCentral()
-        maven { url "/Volumes/document/repo-local" }
-        maven { url "https://maven.google.com" }
+        mavenLocal()
         maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+        maven { url "https://maven.google.com" }
+
     }
 }
 

@@ -25,8 +25,6 @@ buildscript {
         google()
         mavenLocal()
         maven { url "https://jitpack.io" }
-        //TODO 此处为电脑本地仓库
-        maven { url "/Volumes/document/repo-local" }
         maven { url "https://maven.google.com" }
         maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
     }
@@ -43,8 +41,6 @@ allprojects {
         mavenCentral()
         mavenLocal()
         maven { url "https://jitpack.io" }
-        //TODO 此处为电脑本地仓库
-        maven { url "/Volumes/document/repo-local" }
         maven { url "https://maven.google.com" }
         maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
     }
